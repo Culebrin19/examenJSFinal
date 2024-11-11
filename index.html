@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A brief page description">
+    <meta name="keywords" content="html,cheatsheet" />
+    <meta property="fb:admins" content="YourFacebookUsername" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/normalized.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <fieldset>
+        <legend>Problema</legend>
+        <form action="">
+            <label for="text">Text:</label>
+            <textarea name="text" id="text"></textarea><br><br>
+
+            <label for="caracter">Caràcter:</label>
+            <input type="text" id="caracterAbuscar">
+
+            <button type="button" onclick="buscarParaula()">INICIAR</button>
+        </form>
+    </fieldset>
+
+
+    <ul id="resultat">
+        <li>Paraules:</li>
+
+    </ul>
+
+    <script>
+        // variables per a guardar els valors dels inputs
+
+
+
+
+        function buscarParaula() {
+            let text = document.getElementById('text').value.toLowerCase();
+            let caracter = document.getElementById('caracterAbuscar').value.toLowerCase();
+            let pantallaResultat = document.getElementById('resultat');
+            /**
+             * Amb el split le indico que el terme per separar les paraules son els espais en blanc, i si en té menys de 2
+             *  que mostri un error per pantalla, si no, va a la segona condicio
+             */
+            if (text.split(' ').length < 2) {   // li indico el terme per separar les paraules i una condicio que si en té menys de 2 que mostri un error per pantalla
+                alert("Escriu almenys dues paraules");
+                return;
+            }  else { 
+                let paraules = text.split(' ');     // li indico el terme per separar les paraules
+                let trobat = false;     // una variable per gestionar si es troba o no
+
+                paraules.forEach(function (paraula) { // un bucle per cada paraula del text
+                    let vegadesTrobat = 0;  // aqui guardo les vegades que es troba 
+
+                    for (let i = 0; i < paraula.length; i++) {  // un bucle per cada lletra de la paraula
+                        if (paraula[i] === caracter) {  // si la lletra es igual al caracter que busquem
+                            vegadesTrobat++;    // incrementa la variable a 1
+                        }
+                    }
+
+                    if (vegadesTrobat > 0) {    // si la variable es major a 0, o sigui s'ha trobat 
+                        let li = document.createElement('li');  // creo un element li
+                        li.textContent = paraula + " s'ha trobat " + vegadesTrobat + " vegades";    // li concateno la parula i les vegades que surt
+                        pantallaResultat.appendChild(li);   // faig el appendChild ja que es filla de ul
+                        trobat = true;  // i el valor de trobat canvia a true, aixi no mostra l'error
+                    }
+                });
+
+                if (!trobat) {
+                    alert("No s'ha trobat cap paraula");
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
