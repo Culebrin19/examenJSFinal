@@ -23,13 +23,13 @@
 
     <fieldset>
         <legend>Problema</legend>
-            <label for="text">Text:</label>
+            <label for="text">Text:</label><br><br>
             <textarea name="text" id="text"></textarea><br><br>
 
-            <label for="caracter">Caràcter:</label>
+            <label for="caracter">Caràcter:</label><br><br>
             <input type="text" id="caracterAbuscar" minlength="1" maxlength="1">
 
-            <button type="button" onclick="buscarParaula()">INICIAR</button>
+            <br><br><button type="button" onclick="buscarParaula()">INICIAR</button>
     </fieldset>
 
 
@@ -40,8 +40,6 @@
 
     <script>
         // variables per a guardar els valors dels inputs
-
-
         function buscarParaula() {
             let text = document.getElementById('text').value.toLowerCase();
             let caracter = document.getElementById('caracterAbuscar').value.toLowerCase();

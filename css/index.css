@@ -1,3 +1,21 @@
 fieldset{
     width: 30rem;
+    background-color: white;
+    margin-left: 30rem;
+    margin-top: 16rem;
+    border: 3px solid black;
+    height: 15rem;
+}
+
+legend{
+    color: blue;
+    font-size: 30px;
+}
+
+body{
+    background-color: skyblue;
+}
+
+label{
+    color: blue;
 }
