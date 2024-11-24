@@ -24,4 +24,5 @@ label{
 input, textarea{
     border: 3px solid black;
     background-color: steelblue;
+    height: 2.5rem;
 }
