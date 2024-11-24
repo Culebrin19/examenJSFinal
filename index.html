@@ -23,15 +23,13 @@
 
     <fieldset>
         <legend>Problema</legend>
-        <form action="">
             <label for="text">Text:</label>
             <textarea name="text" id="text"></textarea><br><br>
 
             <label for="caracter">Caràcter:</label>
-            <input type="text" id="caracterAbuscar">
+            <input type="text" id="caracterAbuscar" minlength="1" maxlength="1">
 
             <button type="button" onclick="buscarParaula()">INICIAR</button>
-        </form>
     </fieldset>
 
 
@@ -44,12 +42,11 @@
         // variables per a guardar els valors dels inputs
 
 
-
-
         function buscarParaula() {
             let text = document.getElementById('text').value.toLowerCase();
             let caracter = document.getElementById('caracterAbuscar').value.toLowerCase();
             let pantallaResultat = document.getElementById('resultat');
+            let msg = "";
             /**
              * Amb el split le indico que el terme per separar les paraules son els espais en blanc, i si en té menys de 2
              *  que mostri un error per pantalla, si no, va a la segona condicio
@@ -67,12 +64,13 @@
                     for (let i = 0; i < paraula.length; i++) {  // un bucle per cada lletra de la paraula
                         if (paraula[i] === caracter) {  // si la lletra es igual al caracter que busquem
                             vegadesTrobat++;    // incrementa la variable a 1
+                            msg = i;
                         }
                     }
 
                     if (vegadesTrobat > 0) {    // si la variable es major a 0, o sigui s'ha trobat 
                         let li = document.createElement('li');  // creo un element li
-                        li.textContent = paraula + " s'ha trobat " + vegadesTrobat + " vegades";    // li concateno la parula i les vegades que surt
+                        li.innerHTML = "<strong>" +paraula + "</strong>" + " s'ha trobat " + vegadesTrobat + " vegades i en la posicio " + msg;    // li concateno la parula i les vegades que surt
                         pantallaResultat.appendChild(li);   // faig el appendChild ja que es filla de ul
                         trobat = true;  // i el valor de trobat canvia a true, aixi no mostra l'error
                     }
